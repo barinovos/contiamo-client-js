@@ -1,0 +1,38 @@
+{
+  "name": "contiamo-client-js",
+  "version": "1.2.5",
+  "description": "Contiamo javascript client",
+  "main": "index.js",
+  "repository": {},
+  "author": "Contiamo",
+  "license": "NONE",
+  "scripts": {
+    "build": "webpack --config webpack.production.config.js --progress --profile --colors",
+    "build-lib": "webpack --config webpack.lib.config.js --progress --profile --colors",
+    "dev": "webpack-dev-server --progress --profile --colors",
+    "test": "mocha",
+    "lint": "eslint --ext js || exit 0"
+  },
+  "dependencies": {
+    "babel-eslint": "^7.1.1",
+    "babel-preset-flow": "^6.23.0",
+    "eslint": "^3.18.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-babel": "^4.1.1",
+    "eslint-plugin-import": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-plugin-syntax-flow": "^6.18.0",
+    "babel-plugin-transform-class-properties": "^6.23.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-plugin-transform-runtime": "^6.22.0",
+    "babel-preset-es2015": "^6.22.0",
+    "flow-bin": "^0.38.0",
+    "promise-polyfill": "^6.0.2",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2",
+    "whatwg-fetch": "^2.0.2"
+  }
+}
