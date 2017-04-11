@@ -11,9 +11,5 @@ const capabilities = [
 ]
 
 export default function(parent: Object, path: string) {
-  return class WidgetResource extends MakeResource(parent, path, capabilities) {
-    constructor(...args: any) {
-      super(...args);
-    }
-  }
+  return class WidgetResource extends MakeResource(parent, path, capabilities) {}
 }
