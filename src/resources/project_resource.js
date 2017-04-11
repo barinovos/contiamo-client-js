@@ -31,5 +31,9 @@ export default function(parent: Object, path: string) {
     query(attrs: Object = {}) {
       return this.request('query', { method: 'POST' }, attrs)
     }
+
+    sqlQuery(attrs: Object = {}) {
+      return this.request('sql_query', { method: 'POST' }, attrs)
+    }
   }
 }
