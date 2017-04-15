@@ -8,7 +8,7 @@ const queryUrl = function(query: string, startDate: string, endDate: string, opt
     throw new Error('Invalid query string.');
   }
   const queryTypePath = queryType == 'sql' ? 'stored_sql_query' : 'stored_query';
-  const queryUrl = `${options.apiBase}/${projectId}/${queryTypePath}/${queryId}.json?resource_token=${token}`;
+  const queryUrl = `${options.apiBase}/${projectId}/published_queries/${queryId}/data.json?resource_token=${token}`;
   return startDate || endDate ? queryUrl + `&start_date=${startDate}&end_date=${endDate}` : queryUrl;
 };
 
