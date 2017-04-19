@@ -2,9 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  entry: {
-    app: ['./test/index.js']
-  },
+  entry: ['babel-polyfill', 'whatwg-fetch', './test/index.js'],
   output: {
     path: path.resolve(__dirname, 'build'),
     publicPath: '/assets/',
@@ -12,16 +10,15 @@ module.exports = {
     library: 'Contiamo',
     libraryTarget: 'var'
   },
-  resolve: {
-    extensions: ['', '.js']
-  },
   module: {
-    loaders: [
+    rules: [
       {
-        test: /.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        babelrc: true,
+        test: /\.js$/,
+        exclude: [/node_modules/, /lib/],
+        use: [{
+          loader: 'babel-loader',
+          options: { presets: ['es2015', 'flow'] }
+        }],
       }
     ]
   },
