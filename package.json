@@ -13,6 +13,8 @@
     "test": "jest"
   },
   "jest": {
+    "collectCoverage": true,
+    "coverageDirectory": "coverage",
     "automock": false,
     "setupFiles": [
       "./jest.config.js"
