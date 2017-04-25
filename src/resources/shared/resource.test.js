@@ -1,5 +1,15 @@
 import Resource from './resource';
 
+const mockResponse = (status, statusText, response) => {
+  return new window.Response(response, {
+    status: status,
+    statusText: statusText,
+    headers: {
+      'Content-type': 'application/json'
+    }
+  });
+};
+  
 test('should set `attrs` as an empty object by default', () => {
   const r = new Resource(1);
   expect(r.attrs).toEqual({});
@@ -45,7 +55,7 @@ describe('static methods: ', () => {
   describe('#request', () => {
     beforeEach(() => {
       fetch.mockReset();
-      fetch.mockResponse(JSON.stringify({ foo: 'bar' }));
+      fetch.mockResponseOnce(JSON.stringify({ foo: 'bar' }));
     });
 
     test('should fire an request with the url and options', () => {
@@ -57,14 +67,22 @@ describe('static methods: ', () => {
     });
 
     test('should add the given `attrs` to the request `body`', () => {
-      MockedResource.request(null, {}, { foo: 'bar' });
+      MockedResource.request(null, {}, { bar: 'baz' });
       expect(JSON.parse(fetch.mock.calls[0][1].body)).toEqual({
-        foo: 'bar'
+        bar: 'baz'
       });
     });
 
     test('should throw an error if the request fails', () => {
-      
+      fetch.mockReset();
+      window.fetch = jest.fn()
+        .mockImplementation(() => Promise.resolve(
+          mockResponse(400, 'Test Error', '{"status":400, "statusText": Test Error!}')
+        ));
+
+      MockedResource.request(null, { method: 'GET' });
+
+      // TODO: assert the error being thrown
     });
   });
 

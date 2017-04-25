@@ -26,6 +26,7 @@ export default class Resource {
     if (attrs) {
       requestOptions.body = JSON.stringify(attrs);
     }
+
     return fetch(url, requestOptions)
       .then((response) => { return response.json() })
       .catch((ex) => { throw new Error(`Request failed: ${ex}`) })
@@ -54,7 +55,7 @@ export default class Resource {
     } else if (subPath) {
       throw new Error('Action subpath not allowed on resource without id.')
     }
-    return path
+    return path;
   }
 
   url() {
