@@ -12,6 +12,14 @@
     "dev": "webpack-dev-server --progress --profile --colors",
     "test": "jest"
   },
+  "jest": {
+    "collectCoverage": true,
+    "coverageDirectory": "coverage",
+    "automock": false,
+    "setupFiles": [
+      "./jest.config.js"
+    ]
+  },
   "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.24.1",
@@ -25,6 +33,7 @@
     "babel-preset-flow": "^6.23.0",
     "flow-bin": "^0.44.2",
     "jest": "^19.0.2",
+    "jest-fetch-mock": "^1.1.1",
     "webpack": "^2.4.1",
     "webpack-dev-server": "^2.4.2",
     "whatwg-fetch": "^2.0.3"
